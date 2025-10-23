@@ -1,4 +1,4 @@
-#Mastering Data Visualization with Python
+# Mastering Data Visualization with Python
 
 
 If love coding or would like to get immersed in the fantastic world of progamming, data analysis and visualization, then, this is the right place for you. Producing good data visualizations is a skill that will be always in high demand in all fields and disciplines. It is not only producing code, but also developing a deep understanding of the data and creating a story for the audience to understand.
@@ -17,6 +17,7 @@ By the end of the seminar, the students will be confident in performing data vis
 The students will also be less dependant on AI tools when performing visualizations and understand more what AI is doing when they decide to use it to produce visualizations. 
 
 ## Contents
+<pre>
 Week 1: Introduction and Python indexing
 Week 2: Python introduction (continuation)
 Week 3: No class
@@ -31,3 +32,4 @@ Week 11: Intro to dashboards and Streamlit
 Week 12: Project work
 Week 13: Project work
 Week 14: Final presentations
+</pre>
