@@ -1,5 +1,7 @@
 import streamlit as st
 import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 #you can use streamlit functions by always starting with st.
 
@@ -160,3 +162,29 @@ else:
 	apart_count = filtered_df["id"].nunique()
 	st.info(f"There are {apart_count} apartments in {option}")
 	st.dataframe(filtered_df)
+	
+########
+
+# create a clean list of options of cities
+cities = filtered_df["cityname"].unique().tolist()
+#states.insert(0, "All states")   # put "All states" at the top
+
+option2 = st.sidebar.selectbox(
+    "Which city would you like to see",
+    cities
+)
+city_df = df.loc[df["cityname"]==option2]
+
+#creating countplot
+st.title(f"Pets allowed in {option2}")
+
+# Create the figure
+fig, ax = plt.subplots(figsize=(12, 6))
+sns.countplot(data=city_df, x="pets_allowed")
+
+ax.set_xlabel("Pets")
+ax.set_ylabel("Count")
+plt.xticks(rotation=45)
+
+# Show it in Streamlit
+st.pyplot(fig)
