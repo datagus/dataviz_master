@@ -24,7 +24,7 @@ whole_url = base_url + url_id + export
 def load_data(): #use a function most of the time to import data in streamlit
     df = pd.read_excel(whole_url, na_values="None")
     return df
-	
+
 #now you can import your data
 st.session_state.data = load_data()
 df = st.session_state.data.copy()
