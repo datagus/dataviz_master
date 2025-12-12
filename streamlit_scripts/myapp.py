@@ -5,6 +5,10 @@ import matplotlib.pyplot as plt
 
 #you can use streamlit functions by always starting with st.
 
+st.set_page_config(
+    page_title="Hello",
+    page_icon="👋",
+)
 
 #Adding a title that always show at the top of your app
 st.title("Rent Aparments in USA - Dashboard")
@@ -22,7 +26,8 @@ def load_data(): #use a function most of the time to import data in streamlit
     return df
 	
 #now you can import your data
-df = load_data()  
+st.session_state.data = load_data()
+df = st.session_state.data.copy()
 
 
 #the function st.sidebar gives you a side bar in your app, you can add whatever you want.
@@ -65,6 +70,7 @@ selected_var = st.sidebar.selectbox(
     "Check the variable description",
     df.columns.tolist()
 )
+
 
 with st.sidebar:
     description = dataset_description.get(selected_var)
