@@ -91,67 +91,8 @@ with st.sidebar:
 
 # Let's subselect a dataframe according to the state we want
 
-# First, we need to create a dictionary of states abbreviations with the full names
-
-state_full_names = {
-    "DC": "District of Columbia",
-    "IN": "Indiana",
-    "VA": "Virginia",
-    "WA": "Washington",
-    "NY": "New York",
-    "CA": "California",
-    "AZ": "Arizona",
-    "NC": "North Carolina",
-    "TX": "Texas",
-    "GA": "Georgia",
-    "FL": "Florida",
-    "AL": "Alabama",
-    "MD": "Maryland",
-    "CO": "Colorado",
-    "NM": "New Mexico",
-    "IL": "Illinois",
-    "TN": "Tennessee",
-    "AK": "Alaska",
-    "MA": "Massachusetts",
-    "NJ": "New Jersey",
-    "OR": "Oregon",
-    "DE": "Delaware",
-    "PA": "Pennsylvania",
-    "IA": "Iowa",
-    "SC": "South Carolina",
-    "MN": "Minnesota",
-    "MI": "Michigan",
-    "KY": "Kentucky",
-    "WI": "Wisconsin",
-    "OH": "Ohio",
-    "CT": "Connecticut",
-    "RI": "Rhode Island",
-    "NV": "Nevada",
-    "UT": "Utah",
-    "MO": "Missouri",
-    "OK": "Oklahoma",
-    "NH": "New Hampshire",
-    "NE": "Nebraska",
-    "LA": "Louisiana",
-    "ND": "North Dakota",
-    "AR": "Arkansas",
-    "KS": "Kansas",
-    "ID": "Idaho",
-    "HI": "Hawaii",
-    "MT": "Montana",
-    "VT": "Vermont",
-    "SD": "South Dakota",
-    "WV": "West Virginia",
-    "MS": "Mississippi",
-    "ME": "Maine",
-    "WY": "Wyoming"
-}
-
-# Second, use the method.map() to get the full names and creating a new column
-df["state_full"] = df["state"].map(state_full_names)
-
 # create a clean list of options of state names
-states = df["state_full"].unique().tolist()
+states = df["state"].unique().tolist()
 states.insert(0, "All states")   # put "All states" at the top
 
 option = st.sidebar.selectbox(
@@ -164,7 +105,7 @@ filtered_df = df.copy()
 if option=="All states":
 	st.dataframe(df)
 else:
-	filtered_df = filtered_df.loc[filtered_df["state_full"]==option, ]
+	filtered_df = filtered_df.loc[filtered_df["state"]==option, ]
 	apart_count = filtered_df["id"].nunique()
 	st.info(f"There are {apart_count} apartments in {option}")
 	st.dataframe(filtered_df)
@@ -172,14 +113,14 @@ else:
 ########
 
 # create a clean list of options of cities
-cities = filtered_df["cityname"].unique().tolist()
+cities = filtered_df["city"].unique().tolist()
 #states.insert(0, "All states")   # put "All states" at the top
 
 option2 = st.sidebar.selectbox(
     "Which city would you like to see",
     cities
 )
-city_df = df.loc[df["cityname"]==option2]
+city_df = df.loc[df["city"]==option2]
 
 #creating countplot
 st.title(f"Pets allowed in {option2}")
